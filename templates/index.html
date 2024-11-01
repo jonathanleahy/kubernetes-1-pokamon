@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pokemon Checker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="pod-info">
+    <p>Served by Pod: {{.PodInfo.Hostname}}</p>
+    <p>Pod IP: {{.PodInfo.IP}}</p>
+</div>
+<div class="pokemon-card">
+    <h1>{{.Name}}</h1>
+    <img src="{{.Image}}" alt="{{.Name}}">
+    <div class="types">
+        Types: {{range $index, $type := .Types}}
+        {{if $index}}, {{end}}{{$type}}
+        {{end}}
+    </div>
+    <div class="stats">
+        <div class="stat">
+            <strong>HP</strong>: {{.Stats.HP}}
+        </div>
+        <div class="stat">
+            <strong>Attack</strong>: {{.Stats.Attack}}
+        </div>
+        <div class="stat">
+            <strong>Defense</strong>: {{.Stats.Defense}}
+        </div>
+        <div class="stat">
+            <strong>Sp. Attack</strong>: {{.Stats.SpAttack}}
+        </div>
+        <div class="stat">
+            <strong>Sp. Defense</strong>: {{.Stats.SpDefense}}
+        </div>
+        <div class="stat">
+            <strong>Speed</strong>: {{.Stats.Speed}}
+        </div>
+    </div>
+    <button onclick="location.reload()">Get Random Pokemon</button>
+</div>
+</body>
+</html>

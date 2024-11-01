@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemon-checker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pokemon-checker
+  template:
+    metadata:
+      labels:
+        app: pokemon-checker
+    spec:
+      containers:
+        - name: pokemon-checker
+          image: jonathanleahy/pokemon-checker:latest
+          imagePullPolicy: Always  # Added to ensure it always pulls the latest version
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
